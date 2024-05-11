@@ -1,11 +1,12 @@
-const $ = require("jquery");
-const _ = require('lodash');
+const $ = require( "jquery" );
+// Load the full build
+const _ = require("lodash");
 
-let counter = 0;
+let count = 0;
 
 function updateCounter() {
-  counter++;
-  $('#count').text(`${counter} clicks on the button`);
+  count++;
+  $( "#count" ).text(`${count} clicks on the button` );
 }
 
 const $button = $("<button>Click here to get started</button>").on(
