@@ -1,6 +1,5 @@
 const path = require("path");
 const htmlWebpackPlugin = require('html-webpack-plugin');
-const { NONAME } = require("dns");
 
 module.exports = {
   mode: "production",
@@ -9,17 +8,11 @@ module.exports = {
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "public"),
-    clean: true
   },
   performance: {
 		maxAssetSize: 1000000,
     maxEntrypointSize: 1000000,
 	},
-  plugins: [new htmlWebpackPlugin(
-    {
-      template: './index.html'
-    }
-  )],
   module: {
     rules: [
       {
