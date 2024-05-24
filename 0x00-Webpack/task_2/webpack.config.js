@@ -1,34 +1,40 @@
-const path = require('path');
+const path = require("path");
+const htmlWebpackPlugin = require('html-webpack-plugin');
+const { NONAME } = require("dns");
 
 module.exports = {
-  mode: 'production',
+  mode: "production",
+  devtool: false,
   entry: path.resolve(__dirname, './js/dashboard_main.js'),
-  performance: {
-    maxAssetSize: 1000000,
-  },
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public'),
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "public"),
+    clean: true
   },
+  performance: {
+		maxAssetSize: 1000000,
+    maxEntrypointSize: 1000000,
+	},
+  plugins: [new htmlWebpackPlugin(
+    {
+      template: './index.html'
+    }
+  )],
   module: {
     rules: [
       {
-        test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       },
       {
-        test: /\.(gif|png|jpe?g|svg)$/i,
+        test: /\.(jpe?g|svg|png|gif)$/i,
+        type: 'asset/resource',
         use: [
-          "file-loader",
           {
-            loader: "image-webpack-loader",
-            options: {
-              bypassOnDebug: true, // webpack@1.x
-              disable: true, // webpack@2.x and newer
-            },
-          },
-        ],
-      },
-    ],
-  },
+            loader: 'file-loader'
+          }
+        ]
+      }
+    ]
+  }
 };

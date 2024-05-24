@@ -1,7 +1,11 @@
+:root {
+  --logo-url: url('../assets/holberton-logo.jpg');
+}
+
 #logo {
   width: 200px;
   height: 200px;
-  background-image: url('../assests/holberton-logo.jpg');
+  background-image: var(--logo-url);
   background-size: 200px 200px;
 }
 
